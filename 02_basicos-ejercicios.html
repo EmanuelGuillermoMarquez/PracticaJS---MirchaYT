@@ -11,11 +11,17 @@
   <h1>Ejercicios de Programación en JavaScript</h1>
   <script>
     /* 1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFunción("Hola Mundo") devolverá 10 */
-    let contador = 0
-    const contarLetras = str => contador += str.length;
+    
+    const contarLetras = function(str) {
+      let contador = 0;
+      contador += str.length;
+      return contador;
+    }
     console.log(contarLetras("Emanuel tiene 23 letras"));
+    console.log(contarLetras("Hola"));
 
     /* 2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFunción("Hola Mundo", 4) devolverá "Hola" */
+    
     const recortarTexto = function(texto, num) {
       let nuevoTexto = texto.slice(0, num);
       return nuevoTexto; 
@@ -24,16 +30,19 @@
 
     /* 3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe.
      miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'] */
-    const devuelveArray = function(str, separador) {
+    
+     const devuelveArray = function(str, separador) {
       const nuevoArray = str.split(separador);
       return nuevoArray;
     }
     console.log(devuelveArray("Mi nombre es Emanuel y tengo 24 años", " "));
 
     /* 4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo */
+    
     let textoRepetido = "";
     const repatirTexto = (texto, num) => textoRepetido = texto.repeat(num);
     console.log(repatirTexto("Mi nombre es Emanuel! ", 4));
+    console.log(repatirTexto("Hola! ", 4));
 
 
     /* 5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH" */
@@ -46,6 +55,7 @@
     console.log(invertirLetras("Me llamo Emanuel"));
 
     /* 6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2 */
+    
     let contadorPalabras = 0;
     const cuentaPalabras = function(texto, palabra) {
       let textoArray = texto.split(" "); 
@@ -59,6 +69,7 @@
     console.log(cuentaPalabras("Me llamo Emanuel mi nombre es Emanuel soy Emanuel Marquez", "Emanuel"));
 
     /* 7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true */
+    
     const funcionPalindromo = function(palabra) {
       let palabra2 = palabra.split("").reverse().join("");
       if (palabra2.toUpperCase() === palabra.toUpperCase()) {
@@ -73,6 +84,7 @@
 
 
     /* 8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5 */
+    
     let textoNuevo = "";
     const eliminarCaracteres = function(palabra, caracteres) {
       let arrayTextoViejo = palabra.split(" ");
@@ -87,28 +99,95 @@
 
 
     /* 9) Programa una función que obtenga un numero aleatorio entre 501 y 600 */
-    let numRamdom = 0
-    const numeroAleatorio = (min, max) => numRamdom += Math.round(Math.random() * (max - min) + min);
+    
+    const numeroAleatorio = function(min, max) {
+      let numRamdom = 0;
+      numRamdom += Math.round(Math.random() * (max - min) + min);
+      return numRamdom;
+    }
+    
     console.log(numeroAleatorio(501, 600));
+    console.log(numeroAleatorio(1, 200));
 
 
     /* 10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true  */
-
+    const esCapicua = function(numero) {
+      if (numero.toString().split("").reverse().join("") === numero.toString()) {
+        return true;
+      }
+       else {
+        return false;
+      }
+    }
+    console.log(esCapicua(333));
+    console.log(esCapicua(789));
 
 
     /* 11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120 */
-
+    const numeroFactorial = function(numero) {
+      let factorial = 1;
+      for (let multiplicador = 1; multiplicador <= numero; multiplicador++) {
+        factorial *= multiplicador; 
+      }
+      return factorial;
+    }
+    console.log(numeroFactorial(5));
+    console.log(numeroFactorial(3));
 
 
     /* 12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true */
 
+    function esPrimo(numero) {
+      if (numero === 1 || numero === 0 || numero === 4) {
+        return false;
+      }
+      for (let divisor = 2; divisor < numero; divisor++) {
+        if (numero % divisor === 0) {
+          return false;
+        }
+        else {
+          return true;
+        }
+      }
+    }
+    console.log(esPrimo(1));
+    console.log(esPrimo(12));
+    console.log(esPrimo(97));
+    console.log(esPrimo(1000003));
+    console.log(esPrimo(1008));
 
 
     /* 13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar */
-
-
+    
+    function esPar(numero) {
+      if (numero % 2 === 0) {
+        return "Par";
+      }
+      else {
+        return "Impar"
+      }
+    }
+    console.log (esPar(28));
+    console.log (esPar(29));
+    console.log (esPar(15));
 
     /* 14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F */
+
+    function deGradosCelciusAFarenheit(numero, medida) {
+      if (medida === "C") {
+        let gradosF = ((numero * 9) / 5) + 32;
+        return gradosF.toFixed(1) + "°F";
+      }
+      else if (medida === "F") {
+        let gradosC = ((numero - 32) * 5) / 9;
+        return gradosC.toFixed(1) + "°C"
+      }
+    }
+    console.log(deGradosCelciusAFarenheit(1, "C"));
+    console.log(deGradosCelciusAFarenheit(30, "C"));
+    console.log(deGradosCelciusAFarenheit(50, "F"));
+    console.log(deGradosCelciusAFarenheit(10, "F"));
+
 
 
 
